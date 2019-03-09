@@ -72,7 +72,7 @@ def launching_web_browser_for_url(url, success_msg_default=None, success_msg_use
             browser_command = [os.path.expandvars(arg).format(url=url)
                                for arg in setting.browser_command]
 
-            if os.name == 'nt':
+            if os.name == 'nt' and PY3K != True:
                 # unicode arguments broken under windows
                 encoding = locale.getpreferredencoding()
                 browser_command = [arg.encode(encoding) for arg in browser_command]
